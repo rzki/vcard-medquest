@@ -3,6 +3,7 @@
 namespace App\Livewire\Contacts;
 
 use Livewire\Component;
+use RamonRietdijk\LivewireTables\Livewire\LivewireTable;
 
 class ContactIndex extends Component
 {
