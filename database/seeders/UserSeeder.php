@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class UserSeeder extends Seeder
 {
@@ -12,6 +15,13 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $superadmin = User::create([
+            'userId' => Str::orderedUuid(),
+            'name' => 'Superadmin',
+            'email' => 'superadmin@medquest.co.id',
+            'password' => Hash::make('Superadmin2024!')
+        ]);
+
+        $superadmin->assignRole('Super Admin');
     }
 }
