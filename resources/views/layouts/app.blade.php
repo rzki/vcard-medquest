@@ -33,7 +33,7 @@
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-6">
                     <div class="header-left d-flex align-items-center">
-                        <div class="menu-toggle-btn mr-20">
+                        <div class="mr-20 menu-toggle-btn">
                             <button
                                 id="menu-toggle"
                                 class="main-btn primary-btn btn-hover"
@@ -48,7 +48,7 @@
                         <!-- profile start -->
                         <div class="profile-box ml-15">
                             <button
-                                    class="dropdown-toggle bg-transparent border-0"
+                                    class="bg-transparent border-0 dropdown-toggle"
                                     type="button"
                                     id="profile"
                                     data-bs-toggle="dropdown"
@@ -94,7 +94,7 @@
     <footer class="footer">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6 order-last order-md-first">
+                <div class="order-last col-md-6 order-md-first">
                     <div class="copyright text-md-start">
                         <p class="text-sm">
                             Designed and Developed by
