@@ -12,6 +12,7 @@
         "laravel/ui": "^4.5",
         "livewire/livewire": "^3.5",
         "milon/barcode": "^11.0",
+        "ramonrietdijk/livewire-tables": "^4.5",
         "spatie/laravel-permission": "^6.10"
     },
     "require-dev": {
