@@ -8,7 +8,9 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- ========== All CSS files linkup ========= -->
-    <link rel="stylesheet" href="{{ asset('css/lineicons.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/brands.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/solid.min.css') }}" />
     @vite('resources/sass/app.scss')
 </head>
 
