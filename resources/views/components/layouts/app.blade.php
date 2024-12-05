@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/brands.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/solid.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/sweetalert2.min.css') }}">
     @vite('resources/sass/app.scss')
 </head>
 
@@ -116,6 +117,7 @@
     <!-- ========= All Javascript files linkup ======== -->
     @vite('resources/js/app.js')
     <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
 </body>
 
 </html>
