@@ -1,72 +1,64 @@
 <div>
     <div class="container">
         <div class="row min-vh-100">
-            <div class="col d-flex justify-content-center align-items-center">
-                <div class="p-5 card">
-                    <h2 class="text-center fw-bold">{{ __('Detail Peserta Pameran') }}</h2>
-                    <!-- /.fw-bold -->
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4 d-flex justify-content-center align-items-center">
+                <div class="py-5 card">
+                    <div class="mb-4 text-center barcode-img">
+                        <img src="{{ asset('images/logo/LOGO-MEDQUEST-HD-2020-11-27-14_56_44.png') }}" width="40%" alt="">
+                    </div>
+                    <div class="mb-3 text-center barcode-card">
+                        <h4 class="mb-4 text-center fw-bold">{{ __('Card Detail') }}</h4>
+                        <img src="{{ asset('storage/'. $contact->barcode) }}" width="20%" alt="" srcset="">
+                    </div>
                     <div class="mb-0 card-body">
-                        <div class="mb-5 text-center barcode-img">
-                            
-                        </div>
-                        <!-- /.text-center -->
                         <div class="row d-flex justify-content-center">
-                            <div class="participant-table w-50 d-flex justify-content-center">
+                            <div class="participant-table d-flex justify-content-center">
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="text-end col-lg-5">
                                         <p class="pb-0 mb-0 fw-bolder">
-                                            {{ __('Nama Lengkap') }}
+                                            {{ __('First Name') }}
                                         </p>
-                                        <!-- /.mb-0 -->
                                     </div>
-                                    <div class="col-lg-6">
-                                        {{-- <p>{{ $participant->full_name }}</p> --}}
+                                    <div class="col-lg-7">
+                                        <p>{{ $contact->first_name }}</p>
                                     </div>
-                                    <!-- /.col-lg-6 -->
-                                    <div class="col-lg-6">
+                                    <div class="text-end col-lg-5">
+                                        <p class="pb-0 mb-0 fw-bolder">
+                                            {{ __('Last Name') }}
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <p>{{ $contact->last_name }}</p>
+                                    </div>
+                                    <div class="text-end col-lg-5">
                                         <p class="pb-0 mb-0 fw-bolder">
                                             {{ __('Email') }}
                                         </p>
-                                        <!-- /.mb-0 -->
                                     </div>
-                                    <div class="col-lg-6">
-                                        {{-- <p>{{ $participant->email }}</p> --}}
+                                    <div class="col-lg-7">
+                                        <p>{{ $contact->email }}</p>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="text-end col-lg-5">
                                         <p class="pb-0 mb-0 fw-bolder">
-                                            {{ __('Nomor Telepon') }}
+                                            {{ __('Phone') }}
                                         </p>
-                                        <!-- /.mb-0 -->
                                     </div>
-                                    <div class="col-lg-6">
-                                        {{-- <p>{{ $participant->phone }}</p> --}}
+                                    <div class="col-lg-7">
+                                        <p>{{ $contact->phone_number }}</p>
                                     </div>
-                                    <!-- /.col-lg-6 -->
-                                    <div class="col-lg-6">
-                                        <p class="pb-0 mb-0 fw-bolder">
-                                            {{ __('Asal Institusi/Perusahaan/Klinik') }}
-                                        </p>
-                                        <!-- /.mb-0 -->
-                                    </div>
-                                    <div class="col-lg-6">
-                                        {{-- <p>{{ $participant->origin }}</p> --}}
-                                    </div>
-                                    <!-- /.col-lg-6 -->
                                 </div>
-                                <!-- /.row -->
                             </div>
-
                         </div>
-                        <!-- /.row -->
                     </div>
-                    <!-- /.card-body -->
+                    <div class="px-5 download-button d-grid">
+                        <button class="btn btn-primary" wire:click.prevent="downloadVCard('{{ $contact->contactId }}')" style="background-color: #111398">
+                            <i class="fas fa-download"></i> {{ __('Download') }}
+                        </button>
+                    </div>
                 </div>
-
             </div>
-            <!-- /.col -->
-            <!-- /.card -->
+            <div class="col-lg-4"></div>
         </div>
-        <!-- /.row -->
     </div>
-    <!-- /.container -->
 </div>

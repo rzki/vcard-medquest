@@ -16,7 +16,7 @@ Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', Dashboard::class)->name('home');
-
+Route::get('contacts/download-vcf', BusinessCardDetail::class)->name('contacts.download');
 Route::middleware('auth')->group(function () {
     Route::view('about', 'about')->name('about');
     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');

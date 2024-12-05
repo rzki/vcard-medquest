@@ -6,19 +6,21 @@ use App\Models\Contact;
 use Livewire\Component;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Layout;
+use JeroenDesloovere\VCard\VCard;
+use Illuminate\Support\Facades\Storage;
 
 class BusinessCardDetail extends Component
 {
-    public $contact, $contactId, $first_name, $last_name, $email, $phone_number, $dept;
-
+    public $contact, $contactId;
     public function mount($contactId)
     {
         $this->contact = Contact::where('contactId', $contactId)->first();
-        $this->first_name = $this->contact->first_name;
-        $this->last_name = $this->contact->last_name;
-        $this->email = $this->contact->email;
-        $this->phone_number = $this->contact->phone_number;
-        $this->dept = $this->contact->dept;
+    }
+    public function downloadVCard($contactId)
+    {
+        $contacts = Contact::where('contactId', $contactId)->first();
+
+        return response()->download(public_path('storage/'.$contacts->file));
     }
     #[Title('Contact Card Detail')]
     #[Layout('components.layouts.public')]
