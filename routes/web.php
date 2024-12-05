@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Contacts\ContactIndex;
 use App\Livewire\Contacts\ContactCreate;
+use App\Livewire\Contacts\ContactEdit;
+use App\Livewire\Public\BusinessCardDetail;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,4 +24,6 @@ Route::middleware('auth')->group(function () {
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
     Route::get('contacts', ContactIndex::class)->name('contacts.index');
     Route::get('contacts/create', ContactCreate::class)->name('contacts.create');
+    Route::get('contacts/edit/{contactId}', ContactEdit::class)->name('contacts.edit');
+    Route::get('contacts/detail/{contactId}', BusinessCardDetail::class)->name('contact-card.detail');
 });
