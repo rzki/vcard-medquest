@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ $title.' - '.env('APP_NAME') }}</title>
 
     <!-- ========== All CSS files linkup ========= -->
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}" />
@@ -89,28 +89,6 @@
             <!-- end container -->
         </section>
         <!-- ========== section end ========== -->
-
-        {{-- <!-- ========== footer start =========== -->
-        <footer class="footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="order-last col-md-6 order-md-first">
-                        <div class="copyright text-md-start">
-                            <p class="text-sm">
-                                Designed and Developed by
-                                <a href="https://plainadmin.com" rel="nofollow" target="_blank">
-                                    PlainAdmin
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- end col-->
-                </div>
-                <!-- end row -->
-            </div>
-            <!-- end container -->
-        </footer>
-        <!-- ========== footer end =========== --> --}}
     </main>
     <!-- ======== main-wrapper end =========== -->
 
