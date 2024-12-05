@@ -1,8 +1,10 @@
 <?php
 
-use App\Livewire\Contacts\ContactIndex;
 use App\Livewire\Dashboard;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Contacts\ContactIndex;
+use App\Livewire\Contacts\ContactCreate;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,4 +21,5 @@ Route::middleware('auth')->group(function () {
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
     Route::get('contacts', ContactIndex::class)->name('contacts.index');
+    Route::get('contacts/create', ContactCreate::class)->name('contacts.create');
 });
