@@ -48,14 +48,11 @@ final class ContactsTable extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('No', 'id')->index()
-            ->bodyAttribute('text-center'),
-            Column::make('Name', 'name')->sortable()->searchable()
-            ->bodyAttribute('text-center'),
-            Column::make('Email', 'email')->sortable()->searchable()
-            ->bodyAttribute('text-center'),
-            Column::make('Phone Number', 'phone_number')->sortable()->searchable()
-            ->bodyAttribute('text-center'),
+            Column::make('No', 'id')->index(),
+            Column::make('First Name', 'first_name')->sortable()->searchable(),
+            Column::make('Last Name', 'last_name')->sortable()->searchable(),
+            Column::make('Email', 'email')->sortable()->searchable(),
+            Column::make('Phone Number', 'phone_number')->sortable()->searchable(),
             Column::action('Action')
         ];
     }

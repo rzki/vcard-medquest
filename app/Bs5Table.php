@@ -27,7 +27,7 @@ class Bs5Table extends Bootstrap5
             ],
 
             'body' => [
-                'tbody'              => 'table-group-divider',
+                'tbody'              => 'table-group-divider text-center',
                 'tbodyEmpty'         => '',
                 'tr'                 => '',
                 'td'                 => 'align-middle text-nowrap px-3 py-2 lh-sm',
