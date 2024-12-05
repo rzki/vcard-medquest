@@ -24,15 +24,111 @@
                         </a>
                     </div>
                 </div>
-                @livewire('contacts.table.contacts-table')
+                <div class="row form">
+                    <div class="table-wrapper table-responsive">
+                        <div class="row search">
+                            <div class="col-lg-6">
+                                <input wire:model.live.debounce.250ms='search' type="text" name="search" id="search"
+                                    class="mb-3 form-control w-25" placeholder="Search...">
+                            </div>
+                            <div class="col-lg-6">
+                            </div>
+                        </div>
+                        <table class="table text-center text-black striped-table">
+                            <thead>
+                                <tr>
+                                    <th class="px-2">
+                                        <input type="checkbox" name="selectAll" id="selectAll"
+                                            wire:model.live='selectAll'>
+                                    </th>
+                                    <th style="width: 2em;">No</th>
+                                    <th>{{ __('First Name') }}</th>
+                                    <th>{{ __('Last Name') }}</th>
+                                    <th>{{ __('Email') }}</th>
+                                    <th>{{ __('Phone Number') }}</th>
+                                    <th>{{ __('Division/Dept') }}</th>
+                                    <th>{{ __('Action') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if ($contacts->isEmpty())
+                                    <tr>
+                                        <td colspan="8" class="text-center">
+                                            {{ __('Data not found') }}
+                                        </td>
+                                    </tr>
+                                @else
+                                    @foreach ($contacts as $contact)
+                                    <tr>
+                                        <td class="px-2"><input type="checkbox" name="selectedItems" id="selectedItems" wire:model.live="selectedItems"
+                                                value="{{ $contact->id }}"></td>
+                                        <td>{{ $contacts->firstItem() + $loop->index }}</td>
+                                        <td>{{ $contact->first_name }}</td>
+                                        <td>{{ $contact->last_name }}</td>
+                                        <td>{{ $contact->email }}</td>
+                                        <td>{{ $contact->phone_number }}</td>
+                                        <td>{{ $contact->dept }}</td>
+                                        <td>
+                                            <a href="{{ route('contact-card.detail', $contact->contactId) }}" class="btn btn-info">
+                                                <i class="fas fa-eye pe-1"></i> {{ __('Detail') }}
+                                            </a>
+                                            <a href="{{ route('contacts.edit', $contact->contactId) }}" class="btn btn-primary">
+                                                <i class="fas fa-edit pe-1"></i> {{ __('Edit') }}
+                                            </a>
+                                            <button class="btn btn-danger" wire:click.prevent="deleteConfirm('{{ $contact->contactId }}')"><i
+                                                    class="fas fa-trash pe-1"></i> {{ __('Delete') }}</button>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                @endif
+                            </tbody>
+                        </table>
+                        <div class="mt-4 row">
+                            <div class="col-lg-6 d-flex align-items-center">
+                                <label class="mb-0 font-bold text-black form-label me-3">Record Per
+                                    Page</label>
+                                <select wire:model.live='perPage' class="text-black form-control per-page"
+                                    style="width: 7%">
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-6 d-flex align-items-center justify-content-end">
+                                {{ $contacts->links() }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-@if (session()->has('alert'))
 @script
-<script>
-    const alerts = @json(session()->get('alert'));
+    <script>
+        window.addEventListener('delete-confirmation', event => {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "Contact will be deleted permanently!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $wire.dispatch('deleteConfirmed');
+                }
+            });
+        })
+    </script>
+@endscript
+@if (session()->has('alert'))
+    @script
+        <script>
+            const alerts = @json(session()->get('alert'));
             const title = alerts.title;
             const icon = alerts.type;
             const toast = alerts.toast;
@@ -50,6 +146,6 @@
                 timerProgressBar: progbar,
                 showConfirmButton: confirm
             });
-</script>
-@endscript
+        </script>
+    @endscript
 @endif

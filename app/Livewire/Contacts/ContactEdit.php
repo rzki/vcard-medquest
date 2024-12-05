@@ -5,15 +5,23 @@ namespace App\Livewire\Contacts;
 use App\Models\Contact;
 use Livewire\Component;
 use Milon\Barcode\DNS2D;
-use Illuminate\Support\Str;
 use Livewire\Attributes\Title;
 use Illuminate\Support\Facades\Storage;
 
-class ContactCreate extends Component
+class ContactEdit extends Component
 {
-    public $first_name, $last_name, $email, $phone_number, $dept;
+    public $contact, $contactId, $first_name, $last_name, $email, $phone_number, $dept;
 
-    public function create()
+    public function mount($contactId)
+    {
+        $this->contact = Contact::where('contactId', $contactId)->first();
+        $this->first_name = $this->contact->first_name;
+        $this->last_name = $this->contact->last_name;
+        $this->email = $this->contact->email;
+        $this->phone_number = $this->contact->phone_number;
+        $this->dept = $this->contact->dept;
+    }
+    public function update()
     {
         // vCard data
         $vCard = "BEGIN:VCARD\n";
@@ -24,14 +32,12 @@ class ContactCreate extends Component
         $vCard .= "TEL;TYPE=WORK,VOICE:{$this->phone_number}\n";
         $vCard .= "EMAIL:{$this->email}\n";
         $vCard .= "END:VCARD";
-        $uuid = Str::orderedUuid();
         $qr = new DNS2D();
         $qr = base64_decode($qr->getBarcodePNG($vCard, 'QRCODE'));
-        $path = 'img/vcard/' . $uuid . '.png';
+        $path = 'img/vcard/' . $this->contactId . '.png';
         Storage::disk('public')->put($path, $qr);
 
-        Contact::create([
-            'contactId' => $uuid,
+        Contact::where('contactId', $this->contactId)->update([
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'email' => $this->email,
@@ -42,7 +48,7 @@ class ContactCreate extends Component
 
         session()->flash('alert', [
             'type' => 'success',
-            'title' => 'Contact created successfully!',
+            'title' => 'Contact updated successfully!',
             'toast' => false,
             'position' => 'center',
             'timer' => 1500,
@@ -52,9 +58,9 @@ class ContactCreate extends Component
         return $this->redirectRoute('contacts.index', navigate:true);
     }
 
-    #[Title('Create New Contact')]
+    #[Title('Edit Contact')]
     public function render()
     {
-        return view('livewire.contacts.contact-create');
+        return view('livewire.contacts.contact-edit');
     }
 }
