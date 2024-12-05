@@ -39,7 +39,7 @@
                         <div class="header-left d-flex align-items-center">
                             <div class="mr-20 menu-toggle-btn">
                                 <button id="menu-toggle" class="main-btn primary-btn btn-hover">
-                                    <i class="lni lni-chevron-left me-2"></i> {{ __('Menu') }}
+                                    <i class="fas fa-chevron-left me-2"></i> {{ __('Menu') }}
                                 </button>
                             </div>
                         </div>
@@ -55,11 +55,11 @@
                                             <h6>{{ Auth::user()->name }}</h6>
                                         </div>
                                     </div>
-                                    <i class="lni lni-chevron-down"></i>
+                                    <i class="fas fa-chevron-down"></i>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profile">
                                     <li>
-                                        <a href="{{ route('profile.show') }}"> <i class="lni lni-user"></i> {{ __('My
+                                        <a href="{{ route('profile.show') }}"> <i class="fas fa-user"></i> {{ __('My
                                             profile') }}</a>
                                     </li>
                                     <li>
@@ -67,7 +67,7 @@
                                             @csrf
                                             <a href="{{ route('logout') }}"
                                                 onclick="event.preventDefault(); this.closest('form').submit();"> <i
-                                                    class="lni lni-exit"></i> {{ __('Logout') }}</a>
+                                                    class="fas fa-right-from-bracket"></i> {{ __('Logout') }}</a>
                                         </form>
                                     </li>
                                 </ul>
