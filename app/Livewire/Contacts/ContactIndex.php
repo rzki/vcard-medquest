@@ -65,6 +65,7 @@ class ContactIndex extends Component
     {
         $this->contact = Contact::where('contactId', $this->contactId)->first();
         Storage::disk('public')->delete($this->contact->barcode);
+        Storage::disk('public')->delete($this->contact->file);
         $this->contact->delete();
         session()->flash('alert', [
             'type' => 'success',

@@ -7,6 +7,7 @@ use Livewire\Component;
 use Milon\Barcode\DNS2D;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Title;
+use JeroenDesloovere\VCard\VCard;
 use Illuminate\Support\Facades\Storage;
 
 class ContactCreate extends Component
@@ -30,6 +31,15 @@ class ContactCreate extends Component
         $path = 'img/vcard/' . $uuid . '.png';
         Storage::disk('public')->put($path, $qr);
 
+        $vcard = new VCard();
+        $vcard->addName($this->last_name, $this->first_name);
+        $vcard->addEmail($this->email);
+        $vcard->addPhoneNumber($this->phone_number);
+        $vcard->addCompany('PT. Medquest Jaya Global');
+        $file = $vcard->getOutput();
+        $pathFile = 'file/vcard/'.$this->first_name.'_'.$this->last_name.'.vcf';
+        Storage::disk('public')->put($pathFile, $file);
+
         Contact::create([
             'contactId' => $uuid,
             'first_name' => $this->first_name,
@@ -38,6 +48,7 @@ class ContactCreate extends Component
             'phone_number' => $this->phone_number,
             'dept' => $this->dept,
             'barcode' => $path,
+            'file' => $pathFile
         ]);
 
         session()->flash('alert', [

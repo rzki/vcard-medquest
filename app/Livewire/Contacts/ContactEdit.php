@@ -6,6 +6,7 @@ use App\Models\Contact;
 use Livewire\Component;
 use Milon\Barcode\DNS2D;
 use Livewire\Attributes\Title;
+use JeroenDesloovere\VCard\VCard;
 use Illuminate\Support\Facades\Storage;
 
 class ContactEdit extends Component
@@ -37,6 +38,15 @@ class ContactEdit extends Component
         $path = 'img/vcard/' . $this->contactId . '.png';
         Storage::disk('public')->put($path, $qr);
 
+        $vcard = new VCard();
+        $vcard->addName($this->last_name, $this->first_name);
+        $vcard->addEmail($this->email);
+        $vcard->addPhoneNumber($this->phone_number);
+        $vcard->addCompany('PT. Medquest Jaya Global');
+        $file = $vcard->getOutput();
+        $pathFile = 'file/vcard/'.$this->first_name.'_'.$this->last_name.'.vcf';
+        Storage::disk('public')->put($pathFile, $file);
+
         Contact::where('contactId', $this->contactId)->update([
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
@@ -44,6 +54,7 @@ class ContactEdit extends Component
             'phone_number' => $this->phone_number,
             'dept' => $this->dept,
             'barcode' => $path,
+            'file' => $pathFile
         ]);
 
         session()->flash('alert', [
