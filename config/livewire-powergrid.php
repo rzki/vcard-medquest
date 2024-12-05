@@ -1,5 +1,7 @@
 <?php
 
+use App\Bs5Table;
+
 return [
 
     /*
@@ -12,7 +14,8 @@ return [
     */
 
     // 'theme' => \PowerComponents\LivewirePowerGrid\Themes\Tailwind::class,
-    'theme' => \PowerComponents\LivewirePowerGrid\Themes\Bootstrap5::class,
+    // 'theme' => \PowerComponents\LivewirePowerGrid\Themes\Bootstrap5::class,
+    'theme' => Bs5Table::class,
 
     'cache_ttl' => null,
 
