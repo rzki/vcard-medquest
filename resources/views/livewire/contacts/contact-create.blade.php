@@ -46,6 +46,12 @@
                             </div>
                             <div class="col-lg-3">
                                 <div class="mb-3 form-group">
+                                    <label for="phone_number2" class="text-black form-label fw-bold">{{ __('Phone Number 2 (Optional)') }}</label>
+                                    <input type="text" name="phone_number2" id="phone_number2" class="form-control" wire:model='phone_number2'>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-3 form-group">
                                     <label for="email" class="text-black form-label fw-bold">{{ __('Email') }}</label>
                                     <input type="email" name="email" id="email" class="form-control" wire:model='email'>
                                 </div>
