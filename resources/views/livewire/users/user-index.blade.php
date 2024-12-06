@@ -61,9 +61,9 @@
                                     <td class="px-2"><input type="checkbox" name="selectedItems" id="selectedItems"
                                             wire:model.live="selectedItems" value="{{ $user->id }}"></td>
                                     <td>{{ $users->firstItem() + $loop->index }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ $user->roles->first()->name }}</td>
+                                    <td>{{ $user->name ?? '' }}</td>
+                                    <td>{{ $user->email ?? '' }}</td>
+                                    <td>{{ $user->roles->first()->name ?? '' }}</td>
                                     <td>
                                         <a href="{{ route('users.edit', $user->userId) }}"
                                             class="btn btn-primary">
