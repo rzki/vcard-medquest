@@ -67,7 +67,8 @@
                                         </a>
                                         <button class="btn btn-danger"
                                             wire:click.prevent="deleteConfirm('{{ $role->id }}')"><i
-                                                class="fas fa-trash pe-1"></i> {{ __('Delete') }}</button>
+                                                class="fas fa-trash pe-1"></i> {{ __('Delete') }}
+                                        </button>
                                     </td>
                                 </tr>
                                 @endforeach
