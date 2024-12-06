@@ -71,7 +71,7 @@ class RoleIndex extends Component
     public function render()
     {
         return view('livewire.roles.role-index',[
-            'roles' => Role::orderByDesc('created_at')
+            'roles' => Role::where('id', '!=', 1)->orderByDesc('created_at')
                             ->paginate($this->perPage)
         ]);
     }
