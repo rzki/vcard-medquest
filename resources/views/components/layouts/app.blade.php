@@ -13,6 +13,15 @@
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/solid.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/sweetalert2.min.css') }}">
     @vite('resources/sass/app.scss')
+    <style>
+        .btn-primary-color{
+            background-color: #111398;
+            color: #f1f1f1;
+        }
+        .sidebar-nav-wrapper .sidebar-nav ul .nav-item a:before{
+            background: #111398;
+        }
+    </style>
 </head>
 
 <body>
@@ -20,7 +29,7 @@
     <aside class="sidebar-nav-wrapper">
         <div class="navbar-logo">
             <a href="{{ route('home') }}">
-                <img src="{{ asset('images/logo/logo.svg') }}" alt="logo" />
+                <img src="{{ asset('images/logo/LOGO-MEDQUEST-HD-2020-11-27-14_56_44.png') }}" width="100%" alt="logo" />
             </a>
         </div>
         <nav class="sidebar-nav">
@@ -39,7 +48,7 @@
                     <div class="col-lg-5 col-md-5 col-6">
                         <div class="header-left d-flex align-items-center">
                             <div class="mr-20 menu-toggle-btn">
-                                <button id="menu-toggle" class="main-btn primary-btn btn-hover">
+                                <button id="menu-toggle" class="main-btn btn-primary-color btn-hover">
                                     <i class="fas fa-chevron-left me-2"></i> {{ __('Menu') }}
                                 </button>
                             </div>

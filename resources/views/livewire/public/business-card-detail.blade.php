@@ -52,7 +52,7 @@
                         </div>
                     </div>
                     <div class="px-5 download-button d-grid">
-                        <button class="btn btn-primary" wire:click.prevent="downloadVCard('{{ $contact->contactId }}')" style="background-color: #111398">
+                        <button class="btn btn-primary-color" wire:click.prevent="downloadVCard('{{ $contact->contactId }}')">
                             <i class="fas fa-download"></i> {{ __('Download') }}
                         </button>
                     </div>

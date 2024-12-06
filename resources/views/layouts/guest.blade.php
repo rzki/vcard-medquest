@@ -7,6 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config('app.name', 'Laravel') }}</title>
     @vite('resources/sass/app.scss')
+    <style>
+        .btn-primary-color{
+        background-color: #111398;
+        color: #f1f1f1;
+        }
+        .text-primary{
+        color: #111398 !important;
+        }
+    </style>
 </head>
 <body>
 

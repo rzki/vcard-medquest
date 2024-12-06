@@ -5,13 +5,10 @@
         <div class="auth-cover-wrapper bg-primary-100">
             <div class="auth-cover">
                 <div class="text-center title">
-                    <h1 class="mb-10 text-primary">{{ __('Login') }}</h1>
+                    <h1 class="text-primary">{{ __('vCard') }}</h1>
                 </div>
                 <div class="cover-image">
-                    <img src="{{ asset('images/auth/signin-image.svg') }}" alt="">
-                </div>
-                <div class="shape-image">
-                    <img src="{{ asset('images/auth/shape.svg') }}" alt="">
+                    <img src="{{ asset('images/logo/LOGO-MEDQUEST-HD-2020-11-27-14_56_44.png') }}" alt="">
                 </div>
             </div>
         </div>
@@ -57,17 +54,9 @@
                             </div>
                         </div>
                         <!-- end col -->
-                        @if (Route::has('password.request'))
-                            <div class="col-xxl-6 col-lg-12 col-md-6">
-                                <div class="text-start text-md-end text-lg-start text-xxl-end mb-30">
-                                    <a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
-                                </div>
-                            </div>
-                        @endif
-                    <!-- end col -->
                         <div class="col-12">
                             <div class="flex-wrap button-group d-flex justify-content-center">
-                                <button type="submit" class="text-center main-btn primary-btn btn-hover w-100">
+                                <button type="submit" class="text-center main-btn btn-primary-color btn-hover w-100">
                                     {{ __('Login') }}
                                 </button>
                             </div>
