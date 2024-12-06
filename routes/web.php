@@ -7,19 +7,27 @@ use App\Livewire\Contacts\ContactIndex;
 use App\Livewire\Contacts\ContactCreate;
 use App\Livewire\Contacts\ContactEdit;
 use App\Livewire\Public\BusinessCardDetail;
+use App\Livewire\Roles\RoleCreate;
+use App\Livewire\Roles\RoleEdit;
+use App\Livewire\Roles\RoleIndex;
+use App\Livewire\Users\UserCreate;
+use App\Livewire\Users\UserEdit;
+use App\Livewire\Users\UserIndex;
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware('guest')->group(function(){
+    Route::get('/', function () {
+        return view('auth.login');
+    });
 });
-
 Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/home', Dashboard::class)->name('home');
-Route::get('contacts/download-vcf', BusinessCardDetail::class)->name('contacts.download');
 Route::middleware('auth')->group(function () {
-    Route::view('about', 'about')->name('about');
-    Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+    Route::get('/home', Dashboard::class)->name('home');
+    Route::get('users', UserIndex::class)->name('users.index');
+    Route::get('users/create', UserCreate::class)->name('users.create');
+    Route::get('users/edit/{userId}', UserEdit::class)->name('users.edit');
+    Route::get('roles', RoleIndex::class)->name('roles.index');
+    Route::get('roles/create', RoleCreate::class)->name('roles.create');
+    Route::get('roles/edit/{roleId}', RoleEdit::class)->name('roles.edit');
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
     Route::get('contacts', ContactIndex::class)->name('contacts.index');
