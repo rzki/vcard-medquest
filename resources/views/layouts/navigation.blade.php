@@ -1,6 +1,6 @@
 <ul>
-    <li class="nav-item @if(request()->routeIs('home')) active @endif">
-        <a href="{{ route('home') }}">
+    <li class="nav-item {{ request()->routeIs('home') ? 'active' : '' }}">
+        <a href="{{ route('home') }}" wire:navigate>
             <span class="icon">
                 <i class="fas fa-grip"></i>
             </span>
@@ -8,8 +8,8 @@
         </a>
     </li>
 
-    <li class="nav-item @if(request()->routeIs('contacts.index')) active @endif">
-        <a href="{{ route('contacts.index') }}">
+    <li class="nav-item {{ request()->routeIs('contacts.*') ? 'active' : '' }}">
+        <a href="{{ route('contacts.index') }}" wire:navigate>
             <span class="icon">
                 <i class="fas fa-address-card"></i>
             </span>
@@ -17,12 +17,21 @@
         </a>
     </li>
 
-    <li class="nav-item @if(request()->routeIs('users.index')) active @endif">
-        <a href="{{ route('users.index') }}">
+    <li class="nav-item {{ request()->routeIs('users.*') ? 'active' : '' }}">
+        <a href="{{ route('users.index') }}" wire:navigate>
             <span class="icon">
                 <i class="fas fa-users"></i>
             </span>
             <span class="text">{{ __('Users') }}</span>
+        </a>
+    </li>
+
+    <li class="nav-item {{ request()->routeIs('roles.*') ? 'active' : '' }}">
+        <a href="{{ route('roles.index') }}" wire:navigate>
+            <span class="icon">
+                <i class="fas fa-user-cog"></i>
+            </span>
+            <span class="text">{{ __('Roles') }}</span>
         </a>
     </li>
 
