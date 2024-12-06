@@ -69,7 +69,7 @@
                                         <td>{{ $contact->phone_number }}</td>
                                         <td>{{ $contact->dept }}</td>
                                         <td>
-                                            <a href="{{ route('contact-card.detail', $contact->contactId) }}" class="btn btn-info">
+                                            <a href="{{ route('contacts.detail', $contact->contactId) }}" class="btn btn-info">
                                                 <i class="fas fa-eye pe-1"></i> {{ __('Detail') }}
                                             </a>
                                             <a href="{{ route('contacts.edit', $contact->contactId) }}" class="btn btn-primary">
