@@ -22,6 +22,7 @@ class ContactCreate extends Component
         $vCard .= "N:{$this->last_name};{$this->first_name}\n";
         $vCard .= "FN:{$this->first_name}"." "."{$this->last_name}\n";
         $vCard .= "ORG:PT. Medquest Jaya Global\n";
+        $vCard .= "TITLE:{$this->dept}\n";
         $vCard .= "TEL;TYPE=MOBILE:{$this->phone_number}\n";
         $vCard .= "TEL;TYPE=WORK:{$this->phone_number2}\n";
         $vCard .= "EMAIL:{$this->email}\n";

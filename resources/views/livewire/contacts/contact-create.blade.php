@@ -40,13 +40,13 @@
                             </div>
                             <div class="col-lg-3">
                                 <div class="mb-3 form-group">
-                                    <label for="phone_number" class="text-black form-label fw-bold">{{ __('Phone Number') }}</label>
+                                    <label for="phone_number" class="text-black form-label fw-bold">{{ __('Phone 1') }}</label>
                                     <input type="text" name="phone_number" id="phone_number" class="form-control" wire:model='phone_number'>
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="mb-3 form-group">
-                                    <label for="phone_number2" class="text-black form-label fw-bold">{{ __('Phone Number 2 (Optional)') }}</label>
+                                    <label for="phone_number2" class="text-black form-label fw-bold">{{ __('Phone 2 (Optional)') }}</label>
                                     <input type="text" name="phone_number2" id="phone_number2" class="form-control" wire:model='phone_number2'>
                                 </div>
                             </div>
