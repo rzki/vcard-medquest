@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Contacts\ContactIndex;
 use App\Livewire\Contacts\ContactCreate;
+use App\Livewire\Contacts\ContactDetail;
 use App\Livewire\Contacts\ContactEdit;
 use App\Livewire\Public\BusinessCardDetail;
 use App\Livewire\Roles\RoleCreate;
@@ -33,5 +34,5 @@ Route::middleware('auth')->group(function () {
     Route::get('contacts', ContactIndex::class)->name('contacts.index');
     Route::get('contacts/create', ContactCreate::class)->name('contacts.create');
     Route::get('contacts/edit/{contactId}', ContactEdit::class)->name('contacts.edit');
-    Route::get('contacts/detail/{contactId}', BusinessCardDetail::class)->name('contact-card.detail');
+    Route::get('contacts/detail/{contactId}', ContactDetail::class)->name('contacts.detail');
 });
