@@ -6,6 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title.' - '.env('APP_NAME') }}</title>
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+    <style>
+        .btn-primary-color{
+        background-color: #111398;
+        color: #f1f1f1;
+        }
+    </style>
 </head>
 <body>
     <main class="content ms-0" style="background-color: #F8F8F8">

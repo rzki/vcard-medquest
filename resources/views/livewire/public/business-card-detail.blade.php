@@ -47,6 +47,14 @@
                                     <div class="col-lg-7">
                                         <p>{{ $contact->phone_number }}</p>
                                     </div>
+                                    <div class="text-end col-lg-5">
+                                        <p class="pb-0 mb-0 fw-bolder">
+                                            {{ __('Division/Dept') }}
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <p>{{ $contact->dept }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
