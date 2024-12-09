@@ -39,6 +39,7 @@ class ContactCreate extends Component
         $vcard->addPhoneNumber($this->phone_number);
         $vcard->addPhoneNumber($this->phone_number2);
         $vcard->addCompany('PT. Medquest Jaya Global');
+        $vcard->addJobtitle($this->dept);
         $file = $vcard->getOutput();
         $pathFile = 'file/vcard/'.$this->first_name.'_'.$this->last_name.'.vcf';
         Storage::disk('public')->put($pathFile, $file);

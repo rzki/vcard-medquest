@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ContactEdit extends Component
 {
-    public $contact, $contactId, $first_name, $last_name, $email, $phone_number, $dept;
+    public $contact, $contactId, $first_name, $last_name, $email, $phone_number, $phone_number2, $dept;
 
     public function mount($contactId)
     {
@@ -20,6 +20,7 @@ class ContactEdit extends Component
         $this->last_name = $this->contact->last_name;
         $this->email = $this->contact->email;
         $this->phone_number = $this->contact->phone_number;
+        $this->phone_number2 = $this->contact->phone_number2;
         $this->dept = $this->contact->dept;
     }
     public function update()
@@ -30,7 +31,9 @@ class ContactEdit extends Component
         $vCard .= "N:{$this->last_name};{$this->first_name}\n";
         $vCard .= "FN:{$this->first_name}"." "."{$this->last_name}\n";
         $vCard .= "ORG:PT. Medquest Jaya Global\n";
-        $vCard .= "TEL;TYPE=WORK,VOICE:{$this->phone_number}\n";
+        $vCard .= "TITLE:{$this->dept}\n";
+        $vCard .= "TEL;TYPE=MOBILE:{$this->phone_number}\n";
+        $vCard .= "TEL;TYPE=WORK:{$this->phone_number2}\n";
         $vCard .= "EMAIL:{$this->email}\n";
         $vCard .= "END:VCARD";
         $qr = new DNS2D();
@@ -42,7 +45,9 @@ class ContactEdit extends Component
         $vcard->addName($this->last_name, $this->first_name);
         $vcard->addEmail($this->email);
         $vcard->addPhoneNumber($this->phone_number);
+        $vcard->addPhoneNumber($this->phone_number2);
         $vcard->addCompany('PT. Medquest Jaya Global');
+        $vcard->addJobtitle($this->dept);
         $file = $vcard->getOutput();
         $pathFile = 'file/vcard/'.$this->first_name.'_'.$this->last_name.'.vcf';
         Storage::disk('public')->put($pathFile, $file);
@@ -52,6 +57,7 @@ class ContactEdit extends Component
             'last_name' => $this->last_name,
             'email' => $this->email,
             'phone_number' => $this->phone_number,
+            'phone_number2' => $this->phone_number2 ?? '',
             'dept' => $this->dept,
             'barcode' => $path,
             'file' => $pathFile
