@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <div class="row form">
-                    <div class="table-wrapper table-responsive">
+                    <div class="table-responsive">
                         <div class="row search">
                             <div class="col-lg-6">
                                 <input wire:model.live.debounce.250ms='search' type="text" name="search" id="search"
@@ -37,17 +37,17 @@
                         <table class="table text-center text-black striped-table">
                             <thead>
                                 <tr>
-                                    <th class="px-2">
+                                    <th class="px-4">
                                         <input type="checkbox" name="selectAll" id="selectAll"
                                             wire:model.live='selectAll'>
                                     </th>
                                     <th style="width: 2em;">No</th>
-                                    <th>{{ __('First Name') }}</th>
-                                    <th>{{ __('Last Name') }}</th>
-                                    <th>{{ __('Email') }}</th>
-                                    <th>{{ __('Phone Number') }}</th>
-                                    <th>{{ __('Division/Dept') }}</th>
-                                    <th>{{ __('Action') }}</th>
+                                    <th class="px-3">{{ __('First Name') }}</th>
+                                    <th class="px-3">{{ __('Last Name') }}</th>
+                                    <th class="px-3">{{ __('Email') }}</th>
+                                    <th class="px-3">{{ __('Phone Number') }}</th>
+                                    <th class="px-3">{{ __('Division/Dept') }}</th>
+                                    <th class="px-3">{{ __('Action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -60,7 +60,7 @@
                                 @else
                                     @foreach ($contacts as $contact)
                                     <tr>
-                                        <td class="px-2"><input type="checkbox" name="selectedItems" id="selectedItems" wire:model.live="selectedItems"
+                                        <td class="px-4"><input type="checkbox" name="selectedItems" id="selectedItems" wire:model.live="selectedItems"
                                                 value="{{ $contact->id }}"></td>
                                         <td>{{ $contacts->firstItem() + $loop->index }}</td>
                                         <td>{{ $contact->first_name }}</td>
@@ -70,13 +70,16 @@
                                         <td>{{ $contact->dept }}</td>
                                         <td>
                                             <a href="{{ route('contacts.detail', $contact->contactId) }}" class="btn btn-info">
-                                                <i class="fas fa-eye pe-1"></i> {{ __('Detail') }}
+                                                <i class="fas fa-eye pe-1"></i>
+                                                
                                             </a>
                                             <a href="{{ route('contacts.edit', $contact->contactId) }}" class="btn btn-primary">
-                                                <i class="fas fa-edit pe-1"></i> {{ __('Edit') }}
+                                                <i class="fas fa-edit pe-1"></i>
+                                                
                                             </a>
                                             <button class="btn btn-danger" wire:click.prevent="deleteConfirm('{{ $contact->contactId }}')"><i
-                                                    class="fas fa-trash pe-1"></i> {{ __('Delete') }}</button>
+                                                    class="fas fa-trash pe-1"></i>
+                                                </button>
                                         </td>
                                     </tr>
                                     @endforeach
