@@ -1,8 +1,8 @@
 <div>
     <div class="container">
         <div class="row min-vh-100">
-            <div class="col-lg-4"></div>
-            <div class="col-lg-4 d-flex justify-content-center align-items-center">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6 d-flex justify-content-center align-items-center">
                 <div class="py-5 card">
                     <div class="mb-4 text-center barcode-img">
                         <img src="{{ asset('images/logo/LOGO-MEDQUEST-HD-2020-11-27-14_56_44.png') }}" width="50%"
@@ -16,44 +16,54 @@
                         <div class="row d-flex justify-content-center">
                             <div class="participant-table d-flex justify-content-center">
                                 <div class="row">
-                                    <div class="text-end col-lg-5">
+                                    <div class="text-end col-lg-6">
                                         <p class="pb-0 mb-0 fw-bolder">
                                             {{ __('First Name') }}
                                         </p>
                                     </div>
-                                    <div class="col-lg-7">
+                                    <div class="col-lg-6">
                                         <p>{{ $contact->first_name }}</p>
                                     </div>
-                                    <div class="text-end col-lg-5">
+                                    <div class="text-end col-lg-6">
                                         <p class="pb-0 mb-0 fw-bolder">
                                             {{ __('Last Name') }}
                                         </p>
                                     </div>
-                                    <div class="col-lg-7">
+                                    <div class="col-lg-6">
                                         <p>{{ $contact->last_name }}</p>
                                     </div>
-                                    <div class="text-end col-lg-5">
+                                    <div class="text-end col-lg-6">
                                         <p class="pb-0 mb-0 fw-bolder">
                                             {{ __('Email') }}
                                         </p>
                                     </div>
-                                    <div class="col-lg-7">
+                                    <div class="col-lg-6">
                                         <p>{{ $contact->email }}</p>
                                     </div>
-                                    <div class="text-end col-lg-5">
+                                    <div class="text-end col-lg-6">
                                         <p class="pb-0 mb-0 fw-bolder">
                                             {{ __('Phone') }}
                                         </p>
                                     </div>
-                                    <div class="col-lg-7">
+                                    <div class="col-lg-6">
                                         <p>{{ $contact->phone_number }}</p>
                                     </div>
-                                    <div class="text-end col-lg-5">
+                                    @if ($contact->phone_number2 != null)
+                                        <div class="text-end col-lg-6">
+                                            <p class="pb-0 mb-0 fw-bolder">
+                                                {{ __('Phone 2') }}
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <p>{{ $contact->phone_number2 }}</p>
+                                        </div>
+                                    @endif
+                                    <div class="text-end col-lg-6">
                                         <p class="pb-0 mb-0 fw-bolder">
                                             {{ __('Division/Dept') }}
                                         </p>
                                     </div>
-                                    <div class="col-lg-7">
+                                    <div class="col-lg-6">
                                         <p>{{ $contact->dept }}</p>
                                     </div>
                                 </div>
@@ -68,7 +78,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4"></div>
+            <div class="col-lg-3"></div>
         </div>
     </div>
 </div>

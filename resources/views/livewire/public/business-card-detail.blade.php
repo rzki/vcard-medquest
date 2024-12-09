@@ -41,14 +41,21 @@
                                     </div>
                                     <div class="text-end col-lg-5">
                                         <p class="pb-0 mb-0 fw-bolder">
-                                            {{ __('Phone 1') }}
+                                            {{ __('Phone') }}
                                         </p>
                                     </div>
                                     <div class="col-lg-7">
                                         <p>{{ $contact->phone_number }}</p>
                                     </div>
-                                    @if ($contact->phone_number2 !=)
-
+                                    @if ($contact->phone_number2 != null)
+                                        <div class="text-end col-lg-5">
+                                            <p class="pb-0 mb-0 fw-bolder">
+                                                {{ __('Phone 2') }}
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-7">
+                                            <p>{{ $contact->phone_number2 }}</p>
+                                        </div>
                                     @endif
                                     <div class="text-end col-lg-5">
                                         <p class="pb-0 mb-0 fw-bolder">

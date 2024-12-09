@@ -34,5 +34,5 @@ Route::middleware('auth')->group(function () {
     Route::get('contacts', ContactIndex::class)->name('contacts.index');
     Route::get('contacts/create', ContactCreate::class)->name('contacts.create');
     Route::get('contacts/edit/{contactId}', ContactEdit::class)->name('contacts.edit');
-    Route::get('contacts/detail/{contactId}', ContactDetail::class)->name('contacts.detail');
 });
+Route::get('contacts/detail/{contactId}', ContactDetail::class)->name('contacts.detail');
