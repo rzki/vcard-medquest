@@ -29,7 +29,7 @@ class ContactCreate extends Component
         $vCard .= "END:VCARD";
         $uuid = Str::orderedUuid();
         $qr = new DNS2D();
-        $qr = base64_decode($qr->getBarcodePNG($vCard, 'QRCODE'));
+        $qr = base64_decode($qr->getBarcodePNG(route('contacts.detail', $uuid), 'QRCODE'));
         $path = 'img/vcard/' . $uuid . '.png';
         Storage::disk('public')->put($path, $qr);
 
