@@ -34,6 +34,12 @@
                             <div class="col-lg-6">
                             </div>
                         </div>
+                        <div class="row export">
+                            <div class="col">
+                                <button wire:click="deleteSelected" class="btn btn-danger {{ count($selectedItems) ? '' : 'd-none' }}">{{
+                                    __('Delete Selected Data (' . count($selectedItems) . ')') }}</button>
+                            </div>
+                        </div>
                         <table class="table text-center text-black striped-table">
                             <thead>
                                 <tr>
@@ -70,15 +76,15 @@
                                         <td>{{ $contact->dept }}</td>
                                         <td>
                                             <a href="{{ route('contacts.detail', $contact->contactId) }}" class="btn btn-info">
-                                                <i class="fas fa-eye pe-1"></i>
-                                                
+                                                <i class="fas fa-eye"></i>
+
                                             </a>
                                             <a href="{{ route('contacts.edit', $contact->contactId) }}" class="btn btn-primary">
-                                                <i class="fas fa-edit pe-1"></i>
-                                                
+                                                <i class="fas fa-edit"></i>
+
                                             </a>
                                             <button class="btn btn-danger" wire:click.prevent="deleteConfirm('{{ $contact->contactId }}')"><i
-                                                    class="fas fa-trash pe-1"></i>
+                                                    class="fas fa-trash"></i>
                                                 </button>
                                         </td>
                                     </tr>
