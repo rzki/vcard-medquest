@@ -13,6 +13,7 @@
         "laravel/ui": "^4.5",
         "livewire/livewire": "^3.5",
         "milon/barcode": "^11.0",
+        "simplesoftwareio/simple-qrcode": "~4",
         "spatie/laravel-permission": "^6.10"
     },
     "require-dev": {
