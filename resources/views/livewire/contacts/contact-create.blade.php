@@ -73,6 +73,9 @@
                                     <input type="text" name="dept" id="dept" class="form-control" wire:model='position'>
                                 </div>
                             </div>
+                            <div class="col-lg-12">
+                                <h6 class="py-5 text-center fw-bold text-uppercase">{{ __('Company') }}</h6>
+                            </div>
                             <div class="col-lg-6">
                                 <div class="mb-3 form-group">
                                     <label for="street" class="text-black form-label fw-bold">{{ __('Street') }}</label>
