@@ -19,7 +19,13 @@ return new class extends Migration
             $table->string('phone_number');
             $table->string('phone_number2')->nullable();
             $table->string('email');
+            $table->string('st_address');
+            $table->string('city_address');
+            $table->string('province_address');
+            $table->string('postcode_address');
+            $table->string('country_address');
             $table->string('dept');
+            $table->string('title');
             $table->string('barcode');
             $table->string('file');
             $table->timestamps();

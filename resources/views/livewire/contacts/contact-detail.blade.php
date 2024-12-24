@@ -61,7 +61,15 @@
                                     </div>
                                     <div class="mb-3 text-center text-lg-start col-lg-7">
                                         <p class="h6 fw-normal">{{ __('PT. Medquest Jaya Global') }}</p>
-                                        <p class="h6 fw-normal">{{ $contact->dept }}</p>
+                                        <p class="h6 fw-normal">{{ $contact->dept .' - '. $contact->title }}</p>
+                                    </div>
+                                    <div class="text-center text-lg-end col-lg-5">
+                                        <p class="pb-0 mb-0 fw-bolder h6">
+                                            {{ __('Address') }}
+                                        </p>
+                                    </div>
+                                    <div class="mb-3 text-center text-lg-start col-lg-7">
+                                        <p class="h6 fw-normal pe-4">{{ $contact->st_address.', '.$contact->city_address.', '.$contact->province_address.' '.$contact->postcode_address.', '.$contact->country_address }}</p>
                                     </div>
                                 </div>
                             </div>

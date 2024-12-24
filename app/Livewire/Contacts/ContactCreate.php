@@ -4,6 +4,7 @@ namespace App\Livewire\Contacts;
 
 use App\Models\Contact;
 use Livewire\Component;
+use App\Models\Division;
 use Milon\Barcode\DNS2D;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Title;
@@ -13,7 +14,7 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class ContactCreate extends Component
 {
-    public $first_name, $last_name, $email, $phone_number, $phone_number2, $dept;
+    public $first_name, $last_name, $email, $phone_number, $phone_number2, $dept, $position, $street, $city, $province, $postcode, $country;
 
     public function create()
     {
@@ -22,8 +23,10 @@ class ContactCreate extends Component
         $vCard .= "VERSION:3.0\n";
         $vCard .= "N:{$this->last_name};{$this->first_name}\n";
         $vCard .= "FN:{$this->first_name}"." "."{$this->last_name}\n";
+        $vCard .= "ADR;TYPE=WORK,PREF:;;{$this->street};{$this->city};{$this->province};{$this->postcode};{$this->country}\n";
         $vCard .= "ORG:PT. Medquest Jaya Global\n";
-        $vCard .= "TITLE:{$this->dept}\n";
+        $vCard .= "ROLE:{$this->dept}\n";
+        $vCard .= "TITLE:{$this->position}\n";
         $vCard .= "TEL;TYPE=MOBILE:{$this->phone_number}\n";
         $vCard .= "TEL;TYPE=WORK:{$this->phone_number2}\n";
         $vCard .= "EMAIL:{$this->email}\n";
@@ -38,10 +41,12 @@ class ContactCreate extends Component
         $vcard = new VCard();
         $vcard->addName($this->last_name, $this->first_name);
         $vcard->addEmail($this->email);
+        $vcard->addAddress(null, null, $this->street, $this->city, $this->province, $this->postcode, $this->country, 'WORK');
         $vcard->addPhoneNumber($this->phone_number);
         $vcard->addPhoneNumber($this->phone_number2);
         $vcard->addCompany('PT. Medquest Jaya Global');
-        $vcard->addJobtitle($this->dept);
+        $vcard->addRole($this->dept);
+        $vcard->addJobtitle($this->position);
         $file = $vcard->getOutput();
         $pathFile = 'file/vcard/'.$this->first_name.'_'.$this->last_name.'.vcf';
         Storage::disk('public')->put($pathFile, $file);
@@ -51,9 +56,15 @@ class ContactCreate extends Component
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'email' => $this->email,
+            'st_address' => $this->street,
+            'city_address' => $this->city,
+            'province_address' => $this->province,
+            'postcode_address' => $this->postcode,
+            'country_address' => $this->country,
             'phone_number' => $this->phone_number,
             'phone_number2' => $this->phone_number2 ?? '',
             'dept' => $this->dept,
+            'title' => $this->position,
             'barcode' => $path,
             'file' => $pathFile
         ]);
@@ -73,6 +84,8 @@ class ContactCreate extends Component
     #[Title('Create New Contact')]
     public function render()
     {
-        return view('livewire.contacts.contact-create');
+        return view('livewire.contacts.contact-create',[
+            'divisions' => Division::orderBy('name')->get()
+        ]);
     }
 }
