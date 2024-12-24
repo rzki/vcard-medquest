@@ -11,7 +11,7 @@
     <li class="nav-item {{ request()->routeIs('contacts.*') ? 'active' : '' }}">
         <a href="{{ route('contacts.index') }}" wire:navigate>
             <span class="icon">
-                <i class="fas fa-address-card"></i>
+                <i class="fas fa-circle-user"></i>
             </span>
             <span class="text">{{ __('Contacts') }}</span>
         </a>
@@ -32,6 +32,14 @@
                 <i class="fas fa-user-cog"></i>
             </span>
             <span class="text">{{ __('Roles') }}</span>
+        </a>
+    </li>
+    <li class="nav-item {{ request()->routeIs('divisions.*') ? 'active' : '' }}">
+        <a href="{{ route('divisions.index') }}" wire:navigate>
+            <span class="icon">
+                <i class="fas fa-address-card"></i>
+            </span>
+            <span class="text">{{ __('Divisions') }}</span>
         </a>
     </li>
 

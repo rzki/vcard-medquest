@@ -1,19 +1,22 @@
 <?php
 
 use App\Livewire\Dashboard;
+use App\Livewire\Roles\RoleEdit;
+use App\Livewire\Users\UserEdit;
+use App\Livewire\Roles\RoleIndex;
+use App\Livewire\Users\UserIndex;
+use App\Livewire\Roles\RoleCreate;
+use App\Livewire\Users\UserCreate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Contacts\ContactEdit;
 use App\Livewire\Contacts\ContactIndex;
 use App\Livewire\Contacts\ContactCreate;
 use App\Livewire\Contacts\ContactDetail;
-use App\Livewire\Contacts\ContactEdit;
+use App\Livewire\Divisions\DivisionEdit;
+use App\Livewire\Divisions\DivisionIndex;
+use App\Livewire\Divisions\DivisionCreate;
 use App\Livewire\Public\BusinessCardDetail;
-use App\Livewire\Roles\RoleCreate;
-use App\Livewire\Roles\RoleEdit;
-use App\Livewire\Roles\RoleIndex;
-use App\Livewire\Users\UserCreate;
-use App\Livewire\Users\UserEdit;
-use App\Livewire\Users\UserIndex;
 
 Route::middleware('guest')->group(function(){
     Route::get('/', function () {
@@ -34,5 +37,8 @@ Route::middleware('auth')->group(function () {
     Route::get('contacts', ContactIndex::class)->name('contacts.index');
     Route::get('contacts/create', ContactCreate::class)->name('contacts.create');
     Route::get('contacts/edit/{contactId}', ContactEdit::class)->name('contacts.edit');
+    Route::get('divisions', DivisionIndex::class)->name('divisions.index');
+    Route::get('divisions/create', DivisionCreate::class)->name('divisions.create');
+    Route::get('divisions/edit/{divisionId}', DivisionEdit::class)->name('divisions.edit');
 });
 Route::get('contacts/detail/{contactId}', ContactDetail::class)->name('contacts.detail');
