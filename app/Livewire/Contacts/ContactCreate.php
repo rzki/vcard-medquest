@@ -32,9 +32,9 @@ class ContactCreate extends Component
         $vCard .= "EMAIL:{$this->email}\n";
         $vCard .= "END:VCARD";
         $uuid = Str::orderedUuid();
-        $qr = QrCode::format('png')->size(200)->merge('/public/images/logo/fave-icon_medquest.png', 0.2)->generate(route('contacts.detail', $uuid));
-        // $qr = new DNS2D();
-        // $qr = base64_decode($qr->getBarcodePNG(route('contacts.detail', $uuid), 'QRCODE'));
+        // $qr = QrCode::format('png')->size(200)->merge('/public/images/logo/fave-icon_medquest.png', 0.2)->generate(route('contacts.detail', $uuid));
+        $qr = new DNS2D();
+        $qr = base64_decode($qr->getBarcodePNG(route('contacts.detail', $uuid), 'QRCODE'));
         $path = 'img/vcard/' . $uuid . '.png';
         Storage::disk('public')->put($path, $qr);
 
