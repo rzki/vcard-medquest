@@ -33,10 +33,7 @@ class ContactCreate extends Component
         $vCard .= "END:VCARD";
         $uuid = Str::orderedUuid();
         // $qr = QrCode::format('png')->size(200)->merge('/public/images/logo/fave-icon_medquest.png', 0.2)->generate(route('contacts.detail', $uuid));
-        $qr = new DNS2D();
-        $qr = base64_decode($qr->getBarcodePNG(route('contacts.detail', $uuid), 'QRCODE'));
-        $path = 'img/vcard/' . $uuid . '.png';
-        Storage::disk('public')->put($path, $qr);
+
 
         $vcard = new VCard();
         $vcard->addName($this->last_name, $this->first_name);
@@ -48,6 +45,12 @@ class ContactCreate extends Component
         $vcard->addRole($this->dept);
         $vcard->addJobtitle($this->position);
         $file = $vcard->getOutput();
+        // Create QR that contains the vCard
+        $qr = new DNS2D();
+        $qr = base64_decode($qr->getBarcodePNG($vCard, 'QRCODE'));
+        $path = 'img/vcard/' . $uuid . '.png';
+        Storage::disk('public')->put($path, $qr);
+        // Save the vCard to a file
         $pathFile = 'file/vcard/'.$this->first_name.'_'.$this->last_name.'.vcf';
         Storage::disk('public')->put($pathFile, $file);
 
