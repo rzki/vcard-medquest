@@ -8,6 +8,7 @@ use App\Livewire\Users\UserIndex;
 use App\Livewire\Roles\RoleCreate;
 use App\Livewire\Users\UserCreate;
 use Illuminate\Support\Facades\Auth;
+use App\Livewire\Profile\ProfileShow;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Contacts\ContactEdit;
 use App\Livewire\Contacts\ContactIndex;
@@ -32,8 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::get('roles', RoleIndex::class)->name('roles.index');
     Route::get('roles/create', RoleCreate::class)->name('roles.create');
     Route::get('roles/edit/{roleId}', RoleEdit::class)->name('roles.edit');
-    Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
-    Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+    Route::get('my-profile', ProfileShow::class)->name('myprofile');
     Route::get('contacts', ContactIndex::class)->name('contacts.index');
     Route::get('contacts/create', ContactCreate::class)->name('contacts.create');
     Route::get('contacts/edit/{contactId}', ContactEdit::class)->name('contacts.edit');

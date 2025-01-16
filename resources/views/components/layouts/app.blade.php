@@ -69,7 +69,7 @@
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profile">
                                     <li>
-                                        <a href="{{ route('profile.show') }}"> <i class="fas fa-user"></i> {{ __('My
+                                        <a href="{{ route('myprofile') }}"> <i class="fas fa-user"></i> {{ __('My
                                             profile') }}</a>
                                     </li>
                                     <li>
