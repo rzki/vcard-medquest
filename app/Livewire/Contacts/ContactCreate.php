@@ -65,7 +65,7 @@ class ContactCreate extends Component
             'phone_number2' => $this->phone_number2 ?? '',
             'dept' => $this->dept,
             'title' => $this->position,
-            'barcode' => $path,
+            'barcode' => $pathFile,
             'file' => $pathFile
         ]);
 

@@ -69,7 +69,7 @@
                                         </p>
                                     </div>
                                     <div class="mb-3 text-center text-lg-start col-lg-7">
-                                        <p class="h6 fw-normal pe-4">{{ $contact->st_address.', '.$contact->city_address.', '.$contact->province_address.' '.$contact->postcode_address.', '.$contact->country_address }}</p>
+                                        <p class="h6 fw-normal pe-lg-4">{{ $contact->st_address.', '.$contact->city_address.', '.$contact->province_address.' '.$contact->postcode_address.', '.$contact->country_address }}</p>
                                     </div>
                                 </div>
                             </div>
