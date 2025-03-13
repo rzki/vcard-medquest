@@ -62,12 +62,10 @@ class DivisionIndex extends Component
     public function delete()
     {
         $this->division = Division::where('divisionId', $this->divisionId)->first();
-        Storage::disk('public')->delete($this->division->barcode);
-        Storage::disk('public')->delete($this->division->file);
         $this->division->delete();
         session()->flash('alert', [
             'type' => 'success',
-            'title' => 'Contact deleted successfully!',
+            'title' => 'Division deleted successfully!',
             'toast' => false,
             'position' => 'center',
             'timer' => 1500,
