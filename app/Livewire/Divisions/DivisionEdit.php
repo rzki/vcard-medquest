@@ -10,7 +10,7 @@ class DivisionEdit extends Component
 {
     public $division, $divisionId, $name;
     public function mount($divisionId){
-        $division = Division::find($divisionId)->first();
+        $division = Division::where('divisionId',$divisionId)->first();
         $this->name = $division->name;
     }
     public function update(){
