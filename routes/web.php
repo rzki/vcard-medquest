@@ -42,3 +42,7 @@ use App\Livewire\Public\BusinessCardDetail;
 //     Route::get('divisions/edit/{divisionId}', DivisionEdit::class)->name('divisions.edit');
 // });
 Route::get('contacts/detail/{contactId}', ContactDetail::class)->name('contacts.detail');
+
+// Maintenance status API endpoint
+Route::get('/api/maintenance/status', [App\Http\Controllers\Api\MaintenanceController::class, 'status'])
+    ->name('api.maintenance.status');
